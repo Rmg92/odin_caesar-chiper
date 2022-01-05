@@ -1,4 +1,4 @@
-require 'pry-byebug'
+require "pry-byebug"
 
 def user_input
   puts "What string you want to code?"
@@ -10,10 +10,17 @@ end
 
 def encrypt(unecrypted_string, shift_factor)
   binding.pry
+  # converts the passed unecrypted_string to an array
   unecrypted_array = unecrypted_string.chars
-  puts unecrypted_string
-  puts unecrypted_array
-  puts shift_factor
+  # converts the each character of the unecrypted_array to ordinal
+  ordinal_array = unecrypted_array.map { |letter| letter.ord }
+  # adds the shift factor to each ordinal on the ordinal_array
+  encoded_ordinal_array = ordinal_array.map { |number| number + shift_factor }
+  # converts the encoded_ordinal_array ordinals back to letters
+  encoded_array = encoded_ordinal_array.map { |number| number.chr}
+  # converts the encoded_array back to a string
+  encoded_string = encoded_array.join
+  puts encoded_string
 end
 
 user_input
