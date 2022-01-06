@@ -18,6 +18,8 @@ def encrypt(unecrypted_message, shift_factor)
   encoded_ordinal_array = ordinal_array.map do |number|
     if number < 65 || (number > 90 && number < 97) || number > 122
       number
+    elsif (number >= 65 && number <= 90 && number + shift_factor > 90) || (number >= 97 && number <= 122 && number + shift_factor > 122)
+      number + shift_factor - 26
     else
       number + shift_factor
     end
