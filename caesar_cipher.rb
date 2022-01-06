@@ -1,4 +1,4 @@
-require "pry-byebug"
+#require "pry-byebug"
 
 def user_input
   puts "What string you want to code?"
@@ -9,16 +9,18 @@ def user_input
 end
 
 def encrypt(unecrypted_message, shift_factor)
-  binding.pry
+  #binding.pry
   # converts the passed unecrypted_string to an array
   unecrypted_array = unecrypted_message.chars
   # converts the each character of the unecrypted_array to ordinal
   ordinal_array = unecrypted_array.map { |letter| letter.ord }
   # adds the shift factor to each ordinal on the ordinal_array
   encoded_ordinal_array = ordinal_array.map do |number|
-    if number < 65 || (number > 90 && number < 97) || number > 122
+    if number < 65 || (number.between?(91, 96)) || number > 122
       number
-    elsif (number >= 65 && number <= 90 && number + shift_factor > 90) || (number >= 97 && number <= 122 && number + shift_factor > 122)
+    elsif number.between?(65, 90) && number + shift_factor > 90 
+      number + shift_factor - 26
+    elsif number.between?(97, 122) && number + shift_factor > 122
       number + shift_factor - 26
     else
       number + shift_factor
