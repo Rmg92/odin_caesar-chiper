@@ -4,6 +4,6 @@ This is a repository for [The Odin Project - Caesar Cipher](https://www.theodinp
 
 # Project Reflections
 
-This project allowed me to pratice array manipulation with #map
+This project allowed me to practice array manipulation with #map
 
-Also used Pry a lot to help me debug easilly and faster
+Also used Pry a lot to help me debug easily and faster
