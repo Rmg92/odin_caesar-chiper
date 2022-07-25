@@ -1,15 +1,15 @@
-#require "pry-byebug"
+# require "pry-byebug"
 
 def user_input
-  puts "What string you want to code?"
+  puts 'What string you want to code?'
   unecrypted_message = gets.chomp
-  puts "For how much do you want to shift it?"
+  puts 'For how much do you want to shift it?'
   shift_factor = gets.chomp.to_i
   encrypt(unecrypted_message, shift_factor)
 end
 
 def encrypt(unecrypted_message, shift_factor)
-  #binding.pry
+  # binding.pry
   # converts the passed unecrypted_string to an array
   unecrypted_array = unecrypted_message.chars
   # converts the each character of the unecrypted_array to ordinal
@@ -20,15 +20,11 @@ def encrypt(unecrypted_message, shift_factor)
       number
     elsif number.between?(65, 90) && number + shift_factor > 90
       new_shift_factor = shift_factor
-      while number + new_shift_factor > 90
-        new_shift_factor -= 26
-      end
+      new_shift_factor -= 26 while number + new_shift_factor > 90
       number + new_shift_factor
     elsif number.between?(97, 122) && number + shift_factor > 122
       new_shift_factor = shift_factor
-      while number + new_shift_factor > 122
-        new_shift_factor -= 26
-      end
+      new_shift_factor -= 26 while number + new_shift_factor > 122
       number + new_shift_factor
     else
       number + shift_factor
