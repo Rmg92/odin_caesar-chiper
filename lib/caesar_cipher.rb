@@ -1,10 +1,10 @@
 
 class CaesarCipher
-  def encrypt(unecrypted_message, shift_factor)
+  def encrypt(message, shift_factor)
     # converts the passed unecrypted_string to an array
-    unecrypted_array = unecrypted_message.chars
+    message_array = message.chars
     # converts the each character of the unecrypted_array to ordinal
-    ordinal_array = unecrypted_array.map { |letter| letter.ord }
+    ordinal_array = message_array.map { |letter| letter.ord }
     # adds the shift factor to each ordinal on the ordinal_array
     encoded_ordinal_array = ordinal_array.map do |number|
       if number < 65 || number.between?(91, 96) || number > 122
@@ -25,6 +25,5 @@ class CaesarCipher
     encoded_array = encoded_ordinal_array.map { |number| number.chr }
     # converts the encoded_array back to a string
     encoded_message = encoded_array.join
-    puts encoded_message
   end
 end
